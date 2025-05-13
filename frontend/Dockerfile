@@ -1,12 +1,13 @@
 FROM node:21 AS Builder
-WORKDIR /frontend
+WORKDIR /app
 COPY package*.json ./
 RUN npm i
+RUN npm run test
 COPY . .
 
 FROM node:21-slim
-WORKDIR /frontend
-COPY --from=Builder /frontend .
+WORKDIR /app
+COPY --from=Builder /app .
 COPY .env.sample .env.local
 
 EXPOSE 3000
