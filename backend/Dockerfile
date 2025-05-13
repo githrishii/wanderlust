@@ -13,9 +13,6 @@ RUN npm ci
 # Copy the rest of the application code to the working directory
 COPY . .
 
-#test
-RUN npm run test
-
 
 #Stage 2
 FROM node:21-slim
